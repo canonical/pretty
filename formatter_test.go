@@ -180,6 +180,7 @@ var gosyntax = []test{
 	{(*time.Time)(nil), "(*time.Time)(nil)"},
 	{&ValueGoString{"vgs"}, `VGS vgs`},
 	{(*ValueGoString)(nil), `(*pretty.ValueGoString)(nil)`},
+	{(*VGSWrapper)(nil), `(*pretty.VGSWrapper)(nil)`},
 	{&PointerGoString{"pgs"}, `PGS pgs`},
 	{(*PointerGoString)(nil), "(*pretty.PointerGoString)(nil)"},
 	{&PanicGoString{"oops!"}, "(*pretty.PanicGoString)(PANIC=GoString method: oops!)"},
@@ -191,6 +192,10 @@ type ValueGoString struct {
 
 func (g ValueGoString) GoString() string {
 	return "VGS " + g.s
+}
+
+type VGSWrapper struct {
+	ValueGoString
 }
 
 type PointerGoString struct {
