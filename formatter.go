@@ -102,9 +102,9 @@ func (p *printer) catchPanic(v reflect.Value, method string) {
 		}
 		writeByte(p, '(')
 		io.WriteString(p, v.Type().String())
-		io.WriteString(p, ")(PANIC=")
-		io.WriteString(p, method)
-		io.WriteString(p, " method: ")
+		io.WriteString(p, ")(PANIC=calling method ")
+		io.WriteString(p, strconv.Quote(method))
+		io.WriteString(p, ": ")
 		fmt.Fprint(p, r)
 		writeByte(p, ')')
 	}

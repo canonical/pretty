@@ -183,7 +183,7 @@ var gosyntax = []test{
 	{(*VGSWrapper)(nil), `(*pretty.VGSWrapper)(nil)`},
 	{&PointerGoString{"pgs"}, `PGS pgs`},
 	{(*PointerGoString)(nil), "(*pretty.PointerGoString)(nil)"},
-	{&PanicGoString{"oops!"}, "(*pretty.PanicGoString)(PANIC=GoString method: oops!)"},
+	{&PanicGoString{"oops!"}, `(*pretty.PanicGoString)(PANIC=calling method "GoString": oops!)`},
 }
 
 type ValueGoString struct {
